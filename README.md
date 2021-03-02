@@ -1,14 +1,15 @@
-# curriculos-
+# curriculos
+
 ## Venv
 sudo apt install python3-venv
 
 ## Pip3
 sudo apt install python3-pip
 
-# Pipenv
+## Pipenv
 sudo apt install pipenv
 
-## Criar o ambiente na primeira vez
+## Criar o ambiente na 1ª vez
 pipenv --three
 
 ## Entrar no ambiente
@@ -17,10 +18,10 @@ pipenv shell
 ## Sair do ambiente
 exit
 
-##Instalar individualmente os pacotes
+## Instalar individualmente os pacotes
 pipenv install Flask
 
-## Instalar todos os pacotes
+## Instalar todo os pacotes
 pipenv install
 
 
@@ -28,43 +29,44 @@ pipenv install
 ## Configurando o banco de dados
 sudo mysql -u root -p
 create database curriculos;
-create user 'aa'@'localhost' identified by 'Senha';
-grant all privileges on curriculos.* to 'aa'@'localhost';
+create user 'suporte'@'localhost' identified by 'SuportE99';
+grant all privileges on curriculos.* to 'suporte'@'localhost';
 
 ## Criar o model
 
 ## Configurar a aplicação
 
-## Configurar o Miagrates
-### Para inicializar o migrates (rodar somente uma vez)
+## Configurar o Migration
+### Para inicializar o migrates (rodar somente 1 vez)
 python3 migrations.py db init
 
-### Ao alterar models
+### Ao alterar algum dos models
 python3 migrations.py db migrate
 python3 migrations.py db upgrade
 
-## CRUD (Console interativo)
+
+## CRUD (console interativo)
 from app import db
 from app.models.tables import Usuario
 import bcrypt
 
-### Adicionar um novo usuario
-senha_plana = 'teste'
+## Adicionar um novo usuário
+senha_plana = 'Suporte99'
 senha_encriptada = bcrypt.hashpw(senha_plana.encode('utf-8'), bcrypt.gensalt())
-u = Usuario(nome='aa', email='aa', senha=senha_encriptada)
-db.session.add(u)
+u1 = Usuario(nome='Marco', email='marco@gmail.com', senha=senha_encriptada)
+db.session.add(u1)
 db.session.commit()
 
-### Selecionar todos os usuarios
+## Selecionar todos os usuários
 lista = Usuario.query.all()
 
-### Selecionar usuario pelo ID
+## Selecionar um usuário pelo ID
 u2 = Usuario.query.filter_by(id=1).first()
-u2.email = 'novo@gmail.com'
+u2.email = 'marco.andrade@gmail.com'
 db.session.add(u2)
 db.session.commit()
 
-### Deletar usuario
+## Deletar um usuário
 u3 = Usuario.query.filter_by(id=1).first()
 db.session.delete(u3)
 db.session.commit()
