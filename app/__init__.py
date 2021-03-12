@@ -4,9 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 
-
 app = Flask(__name__)
-
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://suporte:Suporte99@localhost/curriculos'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -17,8 +15,5 @@ manager.add_command('db', MigrateCommand)
 
 from app.models.tables import Usuario
 
-
-@app.route('/home')
-def home():
-    l = ['Programador Front-end', 'Programador Back-end', 'Devops']
-    return render_template('index.html', lista = l)
+from app.controllers import usuarios
+from app.controllers import instituicoes

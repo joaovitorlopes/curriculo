@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curriculos</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block conteudo %}
     <h1>Curriculos</h1>
-    <ul>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+        </tr>
         {% for l in lista %}
-        <li>{{ l }}</li>
+        <tr>
+            <td>{{ l.nome }}</td>
+            <td>{{ l.email }}</td>
+        </tr>
         {% endfor %}
-    </ul>
-</body>
-</html>
+    </table>
+{% endblock %}
